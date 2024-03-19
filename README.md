@@ -19,7 +19,7 @@ Iniziamo con il definire il layout, modello, migrazione, controller e rotte nece
 2. Creazione del modello Project con relativa migrazione, seeder, controller e rotte.
 Qui potete usare, per aiutarvi a generare i file delle viste velocemente il pacchetto che vi ho mostrato:
 - composer require lanciweb/laravel-make-view
-php artisan make:view admin.projects --crud
+- php artisan make:view admin.projects --crud
 3. Per la parte di back-office creiamo un resource controller `Admin\ProjectController` per gestire le operazioni CRUD dei progetti
 Per oggi occupiamoci  solo di index,  show e destroy!
 ### Bonus
