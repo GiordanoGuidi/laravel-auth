@@ -41,7 +41,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                             <i class="fa-solid fa-pencil"></i>
                         </a>
     
-                    <form action="{{route('admin.projects.destroy',$project->id)}}" method="POST">
+                    <form action="{{route('admin.projects.destroy',$project->id)}}" method="POST" 
+                        class="form-delete" data-project="{{$project->title}}">
                         @csrf
                         @method('DELETE')
                         <button  class="btn btn-danger">
@@ -61,5 +62,22 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
           </tbody>
       </table>
 </section>
+@endsection
+
+{{--Scripts--}}
+@section('scripts')
+    <script>
+        const formsDelete= document.querySelectorAll('.form-delete');
+        formsDelete.forEach(form => {
+            console.log('ciao')
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                const project = form.dataset.project;
+                const confirmation = confirm(`Sei sicuro di voler eliminare il projetto ${project}?`);
+                if(confirmation) form.submit();
+            })
+        });
+
+    </script>
 
 @endsection
