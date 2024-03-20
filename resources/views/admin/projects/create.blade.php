@@ -21,7 +21,8 @@
             </div>
             <div class="col-1">
                 <div class="mb-3">
-                   <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" alt="" class="img-fluid" id="preview">
+                   <img src="{{old('image', 'https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=')}}" 
+                   alt="#" class="img-fluid" id="preview">
                 </div>
             </div>
             <div class="col-12">
@@ -42,4 +43,16 @@
             </div>
           </form>
     </section>
+@endsection
+{{--Scripts--}}
+@section('scripts')
+    <script>
+        const placeholder ='https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=';
+        const input = document.getElementById('image');
+        const preview= document.getElementById('preview');
+        input.addEventListener('input', ()=>{
+            preview.src= input.value ? input.value : placeholder;
+        })
+    </script>
+
 @endsection
