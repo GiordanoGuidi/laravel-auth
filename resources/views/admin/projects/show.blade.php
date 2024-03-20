@@ -34,7 +34,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
             <a href="{{route('admin.projects.edit',$project)}}" class="btn btn-warning">
                 <i class="fa-solid fa-pencil me-1"></i>Modifica</a>
 
-            <form action="{{route('admin.projects.destroy',$project->id)}}" method="POST">
+            <form action="{{route('admin.projects.destroy',$project->id)}}" method="POST"
+                id="form-delete" data-project="{{$project->title}}">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger" class="btn btn-danger">
@@ -43,4 +44,19 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
             </form>
         </div>
     </footer>
+@endsection
+
+{{--Scripts--}}
+@section('scripts')
+    <script>
+        const formDelete= document.getElementById('form-delete');
+        formDelete.addEventListener('submit', e => {
+            e.preventDefault();
+            const project = formDelete.dataset.project;
+            const confirmation = confirm(`Sei sicuro di voler eliminare il projetto ${project}?`);
+            if(confirmation) formDelete.submit();
+        })
+
+    </script>
+
 @endsection

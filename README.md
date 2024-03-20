@@ -16,9 +16,7 @@ Ripercorriamo gli steps fatti a lezione ed iniziamo un nuovo progetto usando lar
 
 Iniziamo con il definire il layout, modello, migrazione, controller e rotte necessarie per il sistema portfolio:
 1. Autenticazione: si parte con l'autenticazione e la creazione di un layout per back-office. In questa fase, gestite anche la riorganizzazione eventuale di rotte, viste e via dicendo.
-2.                
-
-Qui potete usare, per aiutarvi a generare i file delle viste velocemente il pacchetto che vi ho mostrato:
+2. Qui potete usare, per aiutarvi a generare i file delle viste velocemente il pacchetto che vi ho mostrato:
 - composer require lanciweb/laravel-make-view
 - php artisan make:view admin.projects --crud
 3. Per la parte di back-office creiamo un resource controller `Admin\ProjectController` per gestire le operazioni CRUD dei progetti
