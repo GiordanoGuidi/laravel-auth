@@ -21,12 +21,12 @@ Route::get('/', GuestHomeController::class)->name('guest.home');
 
 
 
+//Rotte protette dell'amministratore
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('', AdminHomeController::class)->name('home');
     Route::resource('projects', ProjectController::class);
 });
 
-//Rotte protette dell'amministratore
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
