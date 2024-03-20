@@ -2,17 +2,12 @@
 
 @section('title', 'Projects')
 
-@section('cdns')
-{{--Fontawesome--}}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
-crossorigin="anonymous" referrerpolicy="no-referrer" />
-@endsection
-
 
 @section('content')
+{{--Index dei Progetti--}}
 <section id="projects-index" class="my-5">
     <h1 class="mb-5">Projects</h1>
+    {{--Tabella--}}
     <table class="table table-dark">
         <thead>
             <tr>
@@ -21,7 +16,9 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
               <th scope="col">Slug</th>
               <th scope="col">Creato il</th>
               <th scope="col">Ultima modifica</th>
-              <th scope="col"></th>
+              <th scope="col" class="text-end">
+                <a href="{{route('admin.projects.create')}}" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>Crea</a>
+              </th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
