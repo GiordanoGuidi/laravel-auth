@@ -16,7 +16,8 @@ Ripercorriamo gli steps fatti a lezione ed iniziamo un nuovo progetto usando lar
 
 Iniziamo con il definire il layout, modello, migrazione, controller e rotte necessarie per il sistema portfolio:
 1. Autenticazione: si parte con l'autenticazione e la creazione di un layout per back-office. In questa fase, gestite anche la riorganizzazione eventuale di rotte, viste e via dicendo.
-2. Creazione del modello Project con relativa migrazione, seeder, controller e rotte.
+2.                
+
 Qui potete usare, per aiutarvi a generare i file delle viste velocemente il pacchetto che vi ho mostrato:
 - composer require lanciweb/laravel-make-view
 - php artisan make:view admin.projects --crud
@@ -30,3 +31,14 @@ Per oggi occupiamoci  solo di index,  show e destroy!
 
 Mettete tanta cura perchè questo potrà poi essere il vostro portfolio personale.
 Buon lavoro!
+---
+### Esercizio di oggi: Laravel Boolfolio - Base
+#### nome repo: laravel-auth  (stessa di ieri)
+Descrizione:
+- completiamo le CRUD mancanti per il vostro sito portfolio!
+#### BONUS
+- tutte le cosette varie che abbiamo visto in classe!
+#### SUPER BONUS
+- implementare la modale di bootstrap per la cancellazione
+
+Buon lavoro! :faccia_leggermente_sorridente:
