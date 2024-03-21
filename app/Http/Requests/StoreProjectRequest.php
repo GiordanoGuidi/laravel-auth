@@ -25,7 +25,7 @@ class StoreProjectRequest extends FormRequest
     {
         $id = $this->route('project');
         return [
-            'title' => ['required', 'string', Rule::unique('projectss')->ignore($id)],
+            'title' => 'required|string|unique:projects',
             'content' => 'nullable|string',
             'image' => 'url:http,https',
         ];
