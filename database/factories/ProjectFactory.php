@@ -17,7 +17,7 @@ class ProjectFactory extends Factory
      */
     public function definition(): array
     {
-        $title = fake()->name(30);
+        $title = fake()->text(50);
         return [
             'title' => $title,
             'slug' => Str::slug($title),

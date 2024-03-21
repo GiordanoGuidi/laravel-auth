@@ -10,13 +10,13 @@
             <div class="col-12">
                 <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" >
+                  <input type="text" class="form-control" id="title" name="title" >
                 </div>
             </div>
             <div class="col-11">
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="url" class="form-control" id="image" >
+                    <input type="url" class="form-control" id="image" name="image" >
                 </div>
             </div>
             <div class="col-1">
@@ -28,10 +28,15 @@
             <div class="col-12">
                 <div class="form-floating mb-3">
                     <label for="content" class="form-label">Text</label>
-                    <textarea class="form-control" id="content" rows="30"></textarea>
+                    <textarea class="form-control" id="content" rows="30" name="content"></textarea>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 d-flex justify-content-between">
+                <div class="my-5">
+                    <a href="{{route('admin.projects.index')}}" class="btn btn-primary">
+                        Torna indietro
+                    </a>
+                </div>
                 <div class="d-flex justify-content-center gap-3 my-5">
                     <button type="reset" class="btn btn-secondary">
                         <i class="fa-solid fa-arrow-rotate-left me-1"></i>Svuota i campi
