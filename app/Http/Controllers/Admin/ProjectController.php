@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\UpdateProjectRequest;
+use App\Http\Requests\StoreProjectRequest;
+
+
+
 use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -29,14 +35,14 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
         $data = $request->all();
         $project = new Project();
         $project->fill($data);
         $project->slug = Str::slug($project->title);
         $project->save();
-        return to_route('admin.projects.show', $project);
+        return to_route('admin.projects.show', $project->id);
         // ->with('message', 'Post creato con successo')
         // ->width('type', 'success');
     }
@@ -60,9 +66,13 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $data = $request->validated();
+        $project->update($data);
+        return to_route('admin.projects.index', compact('project'))
+            ->with('type', 'success')
+            ->with('message', "Fumetto {$project->title} modificato correttamente.");
     }
 
     /**

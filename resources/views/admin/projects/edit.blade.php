@@ -5,8 +5,9 @@
 @section('content')
     <section id="create-project" class="my-5">
         <h1 class="mb-5">Nuovo progetto</h1>
-        <form class="row" method="POST" action="{{route('admin.projects.store')}}">
+        <form class="row" method="POST" action="{{route('admin.projects.update',$project)}}">
             @csrf
+            @method('PUT')
             <div class="col-12">
                 <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
