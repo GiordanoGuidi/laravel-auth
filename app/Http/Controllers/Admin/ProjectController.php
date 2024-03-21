@@ -42,9 +42,9 @@ class ProjectController extends Controller
         $project->fill($data);
         $project->slug = Str::slug($project->title);
         $project->save();
-        return to_route('admin.projects.show', $project->id);
-        // ->with('message', 'Post creato con successo')
-        // ->width('type', 'success');
+        return to_route('admin.projects.show', $project->id)
+            ->with('message', 'Progetto creato con successo')
+            ->with('type', 'success');
     }
 
     /**
@@ -72,7 +72,7 @@ class ProjectController extends Controller
         $project->update($data);
         return to_route('admin.projects.index', compact('project'))
             ->with('type', 'success')
-            ->with('message', "Fumetto {$project->title} modificato correttamente.");
+            ->with('message', "Progetto {$project->title} modificato correttamente.");
     }
 
     /**
@@ -81,6 +81,8 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return to_route('admin.projects.index')->with('type', 'success')->with('message', 'Post eliminato con successo');
+        return to_route('admin.projects.index')
+            ->with('type', 'success')
+            ->with('message', 'Post eliminato con successo');
     }
 }

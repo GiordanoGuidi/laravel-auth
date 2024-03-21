@@ -30,10 +30,12 @@
 <body>
     <div id="app">
 
-
-        @include('includes.navbar')
+        {{--Navbar--}}
+        @include('includes.layouts.navbar')
 
         <main class="container">
+            {{--Alert--}}
+            @include('includes.alert')
             @yield('content')
         </main>
     </div>
