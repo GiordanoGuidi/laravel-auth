@@ -10,13 +10,13 @@
             <div class="col-12">
                 <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title" >
+                  <input type="text" class="form-control" id="title" name="title" value="{{old('title','')}}">
                 </div>
             </div>
             <div class="col-11">
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="url" class="form-control" id="image" name="image" >
+                    <input type="url" class="form-control" id="image" name="image" value="{{old('image','')}}">
                 </div>
             </div>
             <div class="col-1">
@@ -27,8 +27,8 @@
             </div>
             <div class="col-12">
                 <div class="form-floating mb-3">
-                    <label for="content" class="form-label">Text</label>
-                    <textarea class="form-control" id="content" rows="30" name="content"></textarea>
+                    <label for="content" class="form-label"></label>
+                    <textarea class="form-control" id="content" rows="30" name="content">{{old('content','')}}</textarea>
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-between">

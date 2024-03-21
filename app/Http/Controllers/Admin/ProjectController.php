@@ -37,6 +37,8 @@ class ProjectController extends Controller
         $project->slug = Str::slug($project->title);
         $project->save();
         return to_route('admin.projects.show', $project);
+        // ->with('message', 'Post creato con successo')
+        // ->width('type', 'success');
     }
 
     /**
