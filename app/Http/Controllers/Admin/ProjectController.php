@@ -43,6 +43,7 @@ class ProjectController extends Controller
         $project->slug = Str::slug($project->title);
         $project->save();
         return to_route('admin.projects.show', $project->id)
+            //Flash data
             ->with('message', 'Progetto creato con successo')
             ->with('type', 'success');
     }
@@ -71,6 +72,7 @@ class ProjectController extends Controller
         $data = $request->validated();
         $project->update($data);
         return to_route('admin.projects.index', compact('project'))
+            //Flash data
             ->with('type', 'success')
             ->with('message', "Progetto {$project->title} modificato correttamente.");
     }
@@ -82,6 +84,7 @@ class ProjectController extends Controller
     {
         $project->delete();
         return to_route('admin.projects.index')
+            //Flash data
             ->with('type', 'success')
             ->with('message', 'Post eliminato con successo');
     }

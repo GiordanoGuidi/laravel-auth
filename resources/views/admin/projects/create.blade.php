@@ -5,6 +5,16 @@
 @section('content')
     <section id="create-project" class="my-5">
         <h1 class="mb-5">Nuovo progetto</h1>
+        {{--Alert Errori--}}
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form class="row" method="POST" action="{{route('admin.projects.store')}}">
             @csrf
             <div class="col-12">

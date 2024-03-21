@@ -17,7 +17,7 @@
               <th scope="col">Creato il</th>
               <th scope="col">Ultima modifica</th>
               <th scope="col" class="text-end">
-                <a href="{{route('admin.projects.create')}}" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>Crea</a>
+                <a href="{{route('admin.projects.create')}}" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>Nuovo</a>
               </th>
             </tr>
           </thead>
