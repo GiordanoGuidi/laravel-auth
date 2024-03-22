@@ -44,8 +44,9 @@ class ProjectController extends Controller
         $project->slug = Str::slug($project->title);
         //Controllo se mi arriva un file
         if (Arr::exists($data, 'image')) {
+            $extension = $data['image']->extension();
             //Lo salvo e prendo l'url
-            $img_url = Storage::putFile('project_images', $data['image']);
+            $img_url = Storage::putFileAs('project_images', $data['image'], $project->slug . '.' . $extension);
             $project->image = $img_url;
         }
         $project->save();
