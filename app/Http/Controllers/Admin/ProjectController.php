@@ -78,14 +78,16 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
+        $data['slug'] = Str::slug($data['title']);
 
         //Controllo se mi arriva un file
         if (Arr::exists($data, 'image')) {
             //Controllo se c'era gia un immagine e la cancello
             if ($project->image) Storage::delete($project->image);
+            $extension = $data['image']->extension();
 
             //Lo salvo e prendo l'url
-            $img_url = Storage::putFile('project_images', $data['image']);
+            $img_url = Storage::putFile('project_images', $data['image'], "{$data['slug']}.$extension");
             $project->image = $img_url;
         }
 
