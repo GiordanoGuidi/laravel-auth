@@ -7,15 +7,16 @@
         <h1 class="mb-5">Nuovo progetto</h1>
         {{--Alert Errori--}}
         @if ($errors->any())
-            <div class="alert alert-danger">
+            <div class="alert alert-danger alert-dismissible fade show">
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <form class="row" method="POST" action="{{route('admin.projects.store')}}">
+        <form class="row" method="POST" action="{{route('admin.projects.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="col-12">
                 <div class="mb-3">
@@ -26,7 +27,7 @@
             <div class="col-11">
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="url" class="form-control" id="image" name="image" value="{{old('image','')}}">
+                    <input type="file" class="form-control" id="image" name="image" value="{{old('image','')}}">
                 </div>
             </div>
             <div class="col-1">

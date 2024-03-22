@@ -6,9 +6,10 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Requests\StoreProjectRequest;
 
 
-
+use Illuminate\Support\Facades\Storage;
 use App\Models\Project;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -41,6 +42,12 @@ class ProjectController extends Controller
         $project = new Project();
         $project->fill($data);
         $project->slug = Str::slug($project->title);
+        //Controllo se mi arriva un file
+        if (Arr::exists($data, 'image')) {
+            //Lo salvo e prendo l'url
+            $img_url = Storage::putFile('project_images', $data['image']);
+            $project->image = $img_url;
+        }
         $project->save();
         return to_route('admin.projects.show', $project->id)
             //Flash data

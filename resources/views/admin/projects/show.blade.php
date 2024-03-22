@@ -15,7 +15,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
     <div>
         <div class="clearfix">
             @if($project->image)
-                <img class="float-start" src="{{$project->image}}" alt="{{$project->title}}">
+                <img class="float-start me-5" src="{{asset('storage/' . $project->image)}}" alt="{{$project->title}}">
                 @endif
             <p>{{$project->content}}</p>
             <div>

@@ -5,7 +5,7 @@
 @section('content')
     <section id="create-project" class="my-5">
         <h1 class="mb-5">Nuovo progetto</h1>
-        <form class="row" method="POST" action="{{route('admin.projects.update',$project)}}">
+        <form class="row" method="POST" action="{{route('admin.projects.update',$project)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="col-12">
@@ -17,7 +17,7 @@
             <div class="col-11">
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="url" class="form-control" id="image" name="image" value="{{old('image',$project->image)}}">
+                    <input type="file" class="form-control" id="image" name="image" value="{{old('image',$project->image)}}">
                 </div>
             </div>
             <div class="col-1">

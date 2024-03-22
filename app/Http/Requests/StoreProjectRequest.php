@@ -27,7 +27,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|string|unique:projects',
             'content' => 'nullable|string',
-            'image' => 'url:http,https',
+            'image' => 'image|mimes:png,jpg,jpeg',
         ];
     }
 }
