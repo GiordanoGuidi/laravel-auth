@@ -4,7 +4,7 @@
 
 @section('content')
     <section id="create-project" class="my-5">
-        <h1 class="mb-5">Nuovo progetto</h1>
+        <h1 class="mb-5">Modifica progetto</h1>
         <form class="row" method="POST" action="{{route('admin.projects.update',$project)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -58,8 +58,19 @@
         const placeholder ='https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=';
         const input = document.getElementById('image');
         const preview= document.getElementById('preview');
-        input.addEventListener('input', ()=>{
-            preview.src= input.value ? input.value : placeholder;
+        input.addEventListener('change', ()=>{
+            
+            if(input.files && input.files[0]){
+                //prendo il file 
+                let file = input.files[0];
+                //Preparo un url temporaneo
+                const blobUrl = URL.createObjectURL(file);
+                //Lo inseriosco nell'src
+                preview.src = blobUrl;
+            }
+            else{
+                preview.src = placeholder;
+            }
         })
     </script>
 

@@ -87,7 +87,7 @@ class ProjectController extends Controller
             $extension = $data['image']->extension();
 
             //Lo salvo e prendo l'url
-            $img_url = Storage::putFile('project_images', $data['image'], "{$data['slug']}.$extension");
+            $img_url = Storage::putFileAs('project_images', $data['image'], "{$data['slug']}.$extension");
             $project->image = $img_url;
         }
 
