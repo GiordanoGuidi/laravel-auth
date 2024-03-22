@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function  __invoke()
     {
-        $projects = Project::orderByDesc('created_at')->limit(5)->get();
+        $projects = Project::orderByDesc('created_at')->paginate(5);
         return view('guest.home', compact('projects'));
     }
 }
