@@ -67,7 +67,7 @@
         const input = document.getElementById('image');
         const preview= document.getElementById('preview');
         input.addEventListener('input', ()=>{
-            preview.src= input.value ? input.value : placeholder;
+            preview.src = input.value ? input.value : placeholder;
         })
     </script>
 

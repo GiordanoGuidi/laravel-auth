@@ -8,12 +8,15 @@
 {{--Lista dei Progetti--}}
 <section id="project-list" class="my-5">
     <h1>Projects</h1>
+    @if($projects->hasPages())
+        {{$projects->links()}}
+    @endif
     @forelse ($projects as $project)
     {{--Card del progetto--}}
     <div class="card mb-3 my-5">
         <div class="row g-0">
-          <div class="col-md-4">
-            <img src="{{asset('storage/' . $project->image)}}" class="img-fluid rounded-start" alt="{{$project->title}}">
+          <div class="col-md-4 d-flex align-items-center">
+            <img src="{{asset('storage/' . $project->image)}}" class="img-fluid rounded-start ms-3" alt="{{$project->title}}">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -30,7 +33,7 @@
     @endforelse
     @if($projects->hasPages())
         {{$projects->links()}}
-      @endif
+    @endif
 </section>
 
 
