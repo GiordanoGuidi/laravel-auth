@@ -13,10 +13,10 @@
     @endif
     @forelse ($projects as $project)
     {{--Card del progetto--}}
-    <div class="card mb-3 my-5">
+      <div class="card mb-3 my-5">
         <div class="row g-0">
           <div class="col-md-4 d-flex align-items-center">
-            <img src="{{asset('storage/' . $project->image)}}" class="img-fluid rounded-start ms-3" alt="{{$project->title}}">
+            <img src="{{asset('storage/' . $project->image)}}" class="img-fluid rounded-start" alt="{{$project->title}}">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -24,6 +24,7 @@
               <p class="card-text">{{$project->content}}</p>
               <p class="card-text"><small class="text-muted">{{$project->created_at}}</small></p>
               <p class="card-text"><small class="text-muted">{{$project->updated_at}}</small></p>
+              <a href="{{route('admin.projects.show', $project)}}" class="btn btn-primary">Vedi</a>
             </div>
           </div>
         </div>
