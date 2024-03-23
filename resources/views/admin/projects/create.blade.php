@@ -5,29 +5,38 @@
 @section('content')
     <section id="create-project" class="my-5">
         <h1 class="mb-5">Nuovo progetto</h1>
-        {{--Alert Errori--}}
-        @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible fade show">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endif
         <form class="row" method="POST" action="{{route('admin.projects.store')}}" enctype="multipart/form-data">
             @csrf
             <div class="col-12">
                 <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title" value="{{old('title','')}}">
+                  <input type="text" class="form-control @error('title') is-invalid @elseif(old('title','')) is-valid @enderror"
+                   id="title" name="title" value="{{old('title','')}}">
+                   @error('title')
+                   <div class="ivalid-feedback">
+                        {{$message}}
+                   </div>
+                   @else
+                   <div class="form text text-muted">
+                    Inserisci il titolo del progetto
+                   </div>
+                   @enderror
                 </div>
             </div>
             <div class="col-11">
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="file" class="form-control" id="image" name="image" value="{{old('image','')}}">
+                    <input type="file" class="form-control @error('image') is-invalid @elseif(old('image','')) is-valid @enderror" 
+                    id="image" name="image" value="{{old('image','')}}">
+                    @error('image')
+                   <div class="ivalid-feedback">
+                        {{$message}}
+                   </div>
+                   @else
+                   <div class="form text text-muted">
+                    Inserisci un immagine di formato PNG, JPG o JPEG.
+                   </div>
+                @enderror
                 </div>
             </div>
             <div class="col-1">
@@ -39,7 +48,18 @@
             <div class="col-12">
                 <div class="form-floating mb-3">
                     <label for="content" class="form-label"></label>
-                    <textarea class="form-control" id="content" rows="30" name="content">{{old('content','')}}</textarea>
+                    <textarea class="form-control @error('content') is-invalid @elseif(old('content','')) is-valid @enderror" 
+                    id="content" rows="30" name="content">{{old('content','')}}</textarea>
+
+                    @error('content')
+                    <div class="ivalid-feedback">
+                         {{$message}}
+                    </div>
+                    @else
+                    <div class="form text text-muted">
+                     Il contenuto deve essere di tipo testo.
+                    </div>
+                 @enderror
                 </div>
             </div>
             <div class="col-12 d-flex justify-content-between">

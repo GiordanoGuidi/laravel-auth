@@ -52,7 +52,7 @@ class ProjectController extends Controller
         $project->save();
         return to_route('admin.projects.show', $project->id)
             //Flash data
-            ->with('message', 'Progetto creato con successo')
+            ->with('message', "Progetto {$project->title} creato con successo")
             ->with('type', 'success');
     }
 
@@ -108,6 +108,6 @@ class ProjectController extends Controller
         return to_route('admin.projects.index')
             //Flash data
             ->with('type', 'success')
-            ->with('message', 'Post eliminato con successo');
+            ->with('message', "Post {$project->title} con successo");
     }
 }

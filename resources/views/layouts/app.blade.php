@@ -29,13 +29,12 @@
 
 <body>
     <div id="app">
-
         {{--Navbar--}}
         @include('includes.layouts.navbar')
 
         <main class="container">
             {{--Alert--}}
-            @include('includes.alert')
+            @include('includes.layouts.alerts')
             @yield('content')
         </main>
     </div>

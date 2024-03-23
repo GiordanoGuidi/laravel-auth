@@ -27,7 +27,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'title' => 'required|string|unique:projects',
             'content' => 'nullable|string',
-            'image' => 'image|mimes:png,jpg,jpeg',
+            'image' => 'required|image|mimes:png,jpg,jpeg',
         ];
     }
 
@@ -38,6 +38,7 @@ class StoreProjectRequest extends FormRequest
             'title.string' => 'Il campo title deve essere una parola',
             'title.unique' => 'Questo titolo è gia esistente',
             'content.string' => 'Il campo content deve essere una parola',
+            'image.required' => 'Il campo image è obbligatorio',
             'image.image' => 'Il file caricato deve essere un immagine',
             'image.mimes' => 'L\'immagine deve essere di formato PNG, JPG o JPEG',
         ];
