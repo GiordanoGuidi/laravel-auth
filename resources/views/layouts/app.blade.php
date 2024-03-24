@@ -22,7 +22,6 @@
 
     {{--Cdns--}}
     @yield('cdns')
-
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
@@ -31,13 +30,15 @@
     <div id="app">
         {{--Navbar--}}
         @include('includes.layouts.navbar')
-
         <main class="container">
             {{--Alert--}}
             @include('includes.layouts.alerts')
             @yield('content')
         </main>
     </div>
+
+    {{--Toast--}}
+    @include('includes.layouts.toast')
     {{--Scripts--}}
     @yield('scripts')
 </body>

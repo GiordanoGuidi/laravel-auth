@@ -133,6 +133,6 @@ class ProjectController extends Controller
         $project->forceDelete();
         return to_route('admin.projects.trash')
             ->with('type', 'danger')
-            ->with('message', "Progetto {$project->title} eliminato con successo");
+            ->with('message', "Progetto {$project->title} eliminato definitivamente");
     }
 }
