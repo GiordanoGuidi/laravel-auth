@@ -62,6 +62,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+
         return view('admin.projects.show', compact('project'));
     }
 
@@ -70,6 +71,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+
+
         return view('admin.projects.edit', compact('project'));
     }
 
@@ -108,8 +111,13 @@ class ProjectController extends Controller
         $project->delete();
         return to_route('admin.projects.index')
             //Flash data
-            ->with('type', 'success')
-            ->with('message', "Post {$project->title} eliminato con successo");
+            ->with('toast-button-type', 'danger')
+            ->with('toast-message', "Progetto {$project->title} eliminato con successo")
+            ->with('toast-label', config('app.name'))
+            ->with('toast-message', "Progetto {$project->title} eliminato")
+            ->with('toast-method', 'PATCH')
+            ->with('toast-route', route('admin.projects.restore', $project->id))
+            ->with('toast-button-label', 'Annulla');
     }
 
     //#Rotte soft delete
