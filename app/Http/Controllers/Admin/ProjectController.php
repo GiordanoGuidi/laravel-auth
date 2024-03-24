@@ -111,4 +111,24 @@ class ProjectController extends Controller
             ->with('type', 'success')
             ->with('message', "Post {$project->title} con successo");
     }
+
+    //#Rotte soft delete
+    public function trash()
+    {
+        $projects = Project::onlyTrashed()->get();
+        return view('admin.projects.trash', compact('projects'));
+    }
+
+    public function restore(Project $project)
+    {
+        $project->restore();
+
+        return to_route('admin.projects.show', compact('project'));
+    }
+
+    public function drop(Project $project)
+    {
+        $project->forceDelete();
+        return to_route('admin.projects.index');
+    }
 }

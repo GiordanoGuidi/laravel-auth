@@ -20,13 +20,19 @@ use Illuminate\Support\Facades\Route;
 
 //Rotte del Guest
 Route::get('/', GuestHomeController::class)->name('guest.home');
-Route::get('projects/{project}', [GuestProjectController::class, 'show'])->name('guest.projects.show');
+Route::get('projects/{slug}', [GuestProjectController::class, 'show'])->name('guest.projects.show');
 
 
 
 //Rotte protette dell'amministratore
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    //Rotta admin home
     Route::get('', AdminHomeController::class)->name('home');
+    //Rotte admin project
+    Route::get('/projects/trash', [AdminProjectController::class, 'trash'])->name('projects.trash');
+    Route::patch('/projects/{project}/restore', [AdminProjectController::class, 'restore'])->name('projects.restore')->withTrashed();
+    Route::delete('/projects/{project}/drop', [AdminProjectController::class, 'drop'])->name('projects.drop')->withTrashed();
+
     Route::resource('projects', AdminProjectController::class);
 });
 
