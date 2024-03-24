@@ -6,7 +6,7 @@
 @section('content')
 {{--Index dei Progetti--}}
 <section id="projects-index" class="my-5">
-    <h1 class="mb-5">Projects</h1>
+    <h1 class="mb-5">Progetti Eliminati</h1>
     {{--Tabella--}}
     <table class="table table-dark">
         <thead>
@@ -61,26 +61,9 @@
             @endforelse
           </tbody>
       </table>
-      @if($projects->hasPages())
+      <a href="{{route('admin.projects.index')}}" class="btn btn-secondary">Progetti attivi</a>
+      {{-- @if($projects->hasPages())
         {{$projects->links()}}
-      @endif
+      @endif --}}
 </section>
-@endsection
-
-{{--Scripts--}}
-@section('scripts')
-    <script>
-        const formsDelete= document.querySelectorAll('.form-delete');
-        formsDelete.forEach(form => {
-            console.log('ciao')
-            form.addEventListener('submit', e => {
-                e.preventDefault();
-                const project = form.dataset.project;
-                const confirmation = confirm(`Sei sicuro di voler eliminare il projetto ${project}?`);
-                if(confirmation) form.submit();
-            })
-        });
-
-    </script>
-
 @endsection

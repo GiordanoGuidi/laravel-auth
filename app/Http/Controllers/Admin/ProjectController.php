@@ -109,7 +109,7 @@ class ProjectController extends Controller
         return to_route('admin.projects.index')
             //Flash data
             ->with('type', 'success')
-            ->with('message', "Post {$project->title} con successo");
+            ->with('message', "Post {$project->title} eliminato con successo");
     }
 
     //#Rotte soft delete
