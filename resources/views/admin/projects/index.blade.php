@@ -17,9 +17,9 @@
               <th scope="col">Creato il</th>
               <th scope="col">Ultima modifica</th>
               <th scope="col" class="text-end">
-                <div class="d-flex gap-2">
+                <div class="d-flex gap-2 justidy-content-end">
                     <a href="{{route('admin.projects.create')}}" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>Nuovo</a>
-                    <a href="{{route('admin.projects.trash')}}" class="btn btn-danger"><i class="fa-solid fa-trash-can me-1"></i>Cestino</a>
+                    <a href="{{route('admin.projects.trash')}}" class="btn btn-danger"><i class="fa-solid fa-trash-can me-1"></i>Vedi Cestino</a>
                 </div>
               </th>
             </tr>
@@ -72,7 +72,6 @@
     <script>
         const formsDelete= document.querySelectorAll('.form-delete');
         formsDelete.forEach(form => {
-            console.log('ciao')
             form.addEventListener('submit', e => {
                 e.preventDefault();
                 const project = form.dataset.project;

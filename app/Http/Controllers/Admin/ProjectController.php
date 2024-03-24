@@ -123,12 +123,16 @@ class ProjectController extends Controller
     {
         $project->restore();
 
-        return to_route('admin.projects.show', compact('project'));
+        return to_route('admin.projects.index', $project->id)
+            ->with('type', 'success')
+            ->with('message', "Progetto {$project->title} ripristinato con successo");
     }
 
     public function drop(Project $project)
     {
         $project->forceDelete();
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.trash')
+            ->with('type', 'danger')
+            ->with('message', "Progetto {$project->title} eliminato con successo");
     }
 }

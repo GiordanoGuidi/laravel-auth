@@ -17,9 +17,10 @@
               <th scope="col">Creato il</th>
               <th scope="col">Ultima modifica</th>
               <th scope="col" class="text-end">
-                <div class="d-flex gap-2">
-                    <a href="{{route('admin.projects.create')}}" class="btn btn-success"><i class="fa-solid fa-plus me-1"></i>Nuovo</a>
-                    <a href="{{route('admin.projects.trash')}}" class="btn btn-danger"><i class="fa-solid fa-trash-can me-1"></i>Cestino</a>
+                <div class="d-flex justify-content-end gap-2 ">
+                    {{--Elimina--}}{{--implementare funzione svuota cestino--}}
+                    <a class="btn btn-danger">
+                        <i class="fa-solid fa-trash-can me-1"></i>Svuota cestino</a>
                 </div>
               </th>
             </tr>
@@ -34,21 +35,32 @@
                 <td>{{$project->updated_at}}</td>
                 <td>
                     <div class="d-flex justify-content-end gap-2">
+                        {{--Vedi progetto--}}
                         <a href="{{route('admin.projects.show',$project)}}" class="btn btn-primary">
                             <i class="fa-solid fa-eye"></i>
                         </a>
+                        {{--Modifica progetto--}}
                         <a href="{{route('admin.projects.edit',$project)}}" class="btn btn-warning">
                             <i class="fa-solid fa-pencil"></i>
                         </a>
-    
-                    <form action="{{route('admin.projects.destroy',$project->id)}}" method="POST" 
-                        class="form-delete" data-project="{{$project->title}}">
-                        @csrf
-                        @method('DELETE')
-                        <button  class="btn btn-danger">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </form>
+                        {{--Elimina progetto--}}
+                        <form action="{{route('admin.projects.drop',$project->id)}}" method="POST" 
+                            class="form-delete m-0" data-project="{{$project->title}}">
+                            @csrf
+                            @method('DELETE')
+                            <button  class="btn btn-danger">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </form>
+                        {{--Ripristina progetto--}}
+                        <form action="{{route('admin.projects.restore',$project->id)}}" method="POST" 
+                            class="form-delete m-0" data-project="{{$project->title}}">
+                            @csrf
+                            @method('PATCH')
+                            <button  class="btn btn-success">
+                                <i class="fas fa-arrows-rotate"></i>
+                            </button>
+                        </form>
                     </div>
                 </td>
             </tr>
@@ -62,8 +74,20 @@
           </tbody>
       </table>
       <a href="{{route('admin.projects.index')}}" class="btn btn-secondary">Progetti attivi</a>
-      {{-- @if($projects->hasPages())
-        {{$projects->links()}}
-      @endif --}}
 </section>
+@endsection
+{{--Scripts--}}
+@section('scripts')
+    <script>
+        const formsDelete= document.querySelectorAll('.form-delete');
+        formsDelete.forEach(form => {
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                const project = form.dataset.project;
+                const confirmation = confirm(`Sei sicuro di voler eliminare il projetto ${project}?`);
+                if(confirmation) form.submit();
+            })
+        });
+
+    </script>
 @endsection
