@@ -3,7 +3,6 @@
 @section('title','Home')
 
 
-
 @section('content')
 {{--Lista dei Progetti--}}
 <section id="project-list" class="my-5">
@@ -24,7 +23,8 @@
               <p class="card-text">{{$project->content}}</p>
               <p class="card-text"><small class="text-muted">{{$project->created_at}}</small></p>
               <p class="card-text"><small class="text-muted">{{$project->updated_at}}</small></p>
-              <a href="{{route('admin.projects.show', $project)}}" class="btn btn-primary">Vedi</a>
+              {{--Link per vedere il singolo progetto--}}
+              <a href="{{route('guest.projects.show', $project->slug)}}" class="btn btn-primary">Vedi</a>
             </div>
           </div>
         </div>
